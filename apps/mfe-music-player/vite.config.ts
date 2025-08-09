@@ -18,20 +18,13 @@ export default defineConfig({
     lib: {
       entry: 'src/main.tsx',
       name: 'MusicPlayerMFE',
-      formats: ['es', 'umd'],
-      fileName: (format) => `music-player.${format}.js`
-    },
-    rollupOptions: {
-      external: ['react', 'react-dom'],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM'
-        }
-      }
+      formats: ['es'],
+      fileName: () => `music-player.es.js`
     }
   },
   define: {
-    global: 'globalThis'
+    global: 'globalThis',
+    'process.env.NODE_ENV': JSON.stringify('production'),
+    process: JSON.stringify({})
   }
 })
