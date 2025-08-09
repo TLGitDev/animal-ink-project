@@ -1,0 +1,30 @@
+{
+  "name": "animal-ink-project",
+  "version": "1.0.0",
+  "description": "Monorepo microfrontend: Next.js (shell) + MFE React+Vite (lecteur de musique) exposé en Web Components.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:shell\" \"npm run dev:music-player\"",
+    "dev:shell": "cd apps/shell && npm run dev",
+    "dev:music-player": "cd apps/mfe-music-player && npm run dev",
+    "build": "npm run build:shell && npm run build:music-player",
+    "build:shell": "cd apps/shell && npm run build",
+    "build:music-player": "cd apps/mfe-music-player && npm run build",
+    "build:vercel": "cd apps/mfe-music-player && npm ci && npm run build && mkdir -p ../shell/public/mfe && cp dist/music-player.es.js ../shell/public/mfe/music-player.es.js && cd ../shell && npm ci && npm run build",
+    "install:all": "npm install && cd apps/shell && npm install && cd ../mfe-music-player && npm install",
+    "clean": "rm -rf node_modules apps/*/node_modules apps/*/dist apps/*/.next"
+  },
+  "keywords": [
+    "micro-frontend",
+    "next.js",
+    "react",
+    "typescript",
+    "music-player"
+  ],
+  "author": "Animal Ink",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
