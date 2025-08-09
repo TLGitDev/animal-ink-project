@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shell (Next.js)
 
-## Getting Started
+Shell Next.js pour Animal Ink. Intègre le MFE MusicPlayer comme Web Component et consomme la bibliothèque UI partagée.
 
-First, run the development server:
-
+## Développement
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev         # démarre le shell en dev (port 3000)
 ```
+- La page d’accueil affiche une grille de boutons (MFE). Le clic charge le MFE dans le `<main>` (header/footer restent visibles).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Intégration du MFE
+- En développement, le wrapper charge `http://localhost:5173/src/main.tsx` (Vite dev server du MFE)
+- En production, le wrapper charge `/mfe/music-player.es.js` (bundle ES copié dans `public/mfe/` au build)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Déploiement Vercel (un seul projet)
+- Root Directory: `apps/shell`
+- Build Command (exécuté à la racine): `npm run build:vercel`
+- Output Directory: (vide)
+- `build:vercel` build l’UI, build le MFE, copie le bundle MFE dans `public/mfe/`, puis build le shell
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## UI partagée
+- Importer via `@animal-ink/ui`:
+```tsx
+import { Button } from '@animal-ink/ui';
+```
+- La lib est dans `packages/ui` (build TypeScript vers `dist`).
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Scripts utiles
+```bash
+npm run build    # build Next.js
+npm run start    # production server
+npm run lint     # lint
+```
