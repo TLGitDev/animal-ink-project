@@ -7,6 +7,7 @@ interface Track {
   artist: string;
   duration: string;
   cover: string;
+  src?: string; // audio/video source (optionnel)
 }
 
 const mockTracks: Track[] = [
@@ -34,7 +35,8 @@ const mockTracks: Track[] = [
 ];
 
 function App() {
-  const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [currentTrack, setCurrentTrack] = useState<Track | null>(mockTracks[0]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.7);
   const [currentTime, setCurrentTime] = useState(0);
@@ -44,31 +46,48 @@ function App() {
   useEffect(() => {
     if (currentTrack && audioRef.current) {
       audioRef.current.load();
-      setDuration(audioRef.current.duration || 0);
+      audioRef.current.volume = volume;
     }
   }, [currentTrack]);
 
   const handlePlayPause = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
+    if (!audioRef.current) return;
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current.play();
+      setIsPlaying(true);
     }
   };
 
-  const handleTrackSelect = (track: Track) => {
-    setCurrentTrack(track);
+  const handlePrev = () => {
+    const nextIndex = (currentIndex - 1 + mockTracks.length) % mockTracks.length;
+    setCurrentIndex(nextIndex);
+    setCurrentTrack(mockTracks[nextIndex]);
+    setIsPlaying(false);
+    setCurrentTime(0);
+  };
+
+  const handleNext = () => {
+    const nextIndex = (currentIndex + 1) % mockTracks.length;
+    setCurrentIndex(nextIndex);
+    setCurrentTrack(mockTracks[nextIndex]);
+    setIsPlaying(false);
+    setCurrentTime(0);
+  };
+
+  const handleSelectTrack = (index: number) => {
+    setCurrentIndex(index);
+    setCurrentTrack(mockTracks[index]);
     setIsPlaying(false);
     setCurrentTime(0);
   };
 
   const handleTimeUpdate = () => {
-    if (audioRef.current) {
-      setCurrentTime(audioRef.current.currentTime);
-    }
+    if (!audioRef.current) return;
+    setCurrentTime(audioRef.current.currentTime);
+    setDuration(audioRef.current.duration || 0);
   };
 
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,9 +101,7 @@ function App() {
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(e.target.value);
     setVolume(newVolume);
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume;
-    }
+    if (audioRef.current) audioRef.current.volume = newVolume;
   };
 
   const formatTime = (time: number) => {
@@ -94,46 +111,55 @@ function App() {
   };
 
   return (
-    <div className="music-player" style={{ width: '100%', height: '100%' }}>
+    <div className="music-player layout">
+      {/* Lecture audio sous-jacente */}
       <audio
         ref={audioRef}
         onTimeUpdate={handleTimeUpdate}
         onEnded={() => setIsPlaying(false)}
         onLoadedMetadata={handleTimeUpdate}
       />
-      
-      {/* Header du lecteur */}
-      <div className="player-header">
-        <h2 className="player-title">Lecteur de Musique</h2>
-        <p className="player-subtitle">Micro-frontend intégré</p>
-      </div>
 
-      {/* Contrôles principaux */}
-      <div className="player-controls">
-        <div className="control-buttons">
-          <button 
-            className="control-btn prev-btn"
-            onClick={() => {/* Navigation précédente */}}
-            disabled
-          >
-            ⏮
-          </button>
-          <button 
-            className="control-btn play-btn"
-            onClick={handlePlayPause}
-          >
+      {/* Colonne gauche: Playlist */}
+      <aside className="playlist">
+        <h3 className="playlist-title">Playlist</h3>
+        <div className="playlist-list">
+          {mockTracks.map((track, idx) => (
+            <button
+              key={track.id}
+              className={`playlist-item ${currentIndex === idx ? 'active' : ''}`}
+              onClick={() => handleSelectTrack(idx)}
+              aria-current={currentIndex === idx}
+            >
+              <img src={track.cover} alt={track.title} className="playlist-cover" />
+              <div className="playlist-info">
+                <div className="playlist-track">{track.title}</div>
+                <div className="playlist-artist">{track.artist}</div>
+              </div>
+              <div className="playlist-duration">{track.duration}</div>
+            </button>
+          ))}
+        </div>
+      </aside>
+
+      {/* Colonne droite: Lecteur */}
+      <section className="player-panel">
+        {/* Zone vidéo/visuel */}
+        <div className="video-container" aria-label="Aperçu vidéo">
+          {/* Placez ici une vidéo si souhaité */}
+          <div className="video-placeholder">Aperçu vidéo</div>
+        </div>
+
+        {/* Contrôles principaux */}
+        <div className="controls-row">
+          <button className="control-btn prev-btn" onClick={handlePrev} aria-label="Piste précédente">⏮</button>
+          <button className="control-btn play-btn" onClick={handlePlayPause} aria-label={isPlaying ? 'Pause' : 'Lecture'}>
             {isPlaying ? '⏸' : '▶'}
           </button>
-          <button 
-            className="control-btn next-btn"
-            onClick={() => {/* Navigation suivante */}}
-            disabled
-          >
-            ⏭
-          </button>
+          <button className="control-btn next-btn" onClick={handleNext} aria-label="Piste suivante">⏭</button>
         </div>
-        
-        {/* Barre de progression */}
+
+        {/* Barre de progression + temps */}
         <div className="progress-container">
           <span className="time-display">{formatTime(currentTime)}</span>
           <input
@@ -147,7 +173,7 @@ function App() {
           <span className="time-display">{formatTime(duration)}</span>
         </div>
 
-        {/* Contrôle du volume */}
+        {/* Volume */}
         <div className="volume-control">
           <span className="volume-icon">🔊</span>
           <input
@@ -160,46 +186,19 @@ function App() {
             className="volume-bar"
           />
         </div>
-      </div>
 
-      {/* Informations de la piste actuelle */}
-      {currentTrack && (
-        <div className="current-track">
-          <img 
-            src={currentTrack.cover} 
-            alt={currentTrack.title}
-            className="track-cover"
-          />
-          <div className="track-info">
-            <h3 className="track-title">{currentTrack.title}</h3>
-            <p className="track-artist">{currentTrack.artist}</p>
-            <p className="track-duration">{currentTrack.duration}</p>
-          </div>
-        </div>
-      )}
-
-      {/* Liste des pistes */}
-      <div className="track-list">
-        <h3 className="track-list-title">Pistes disponibles</h3>
-        {mockTracks.map((track) => (
-          <div
-            key={track.id}
-            className={`track-item ${currentTrack?.id === track.id ? 'active' : ''}`}
-            onClick={() => handleTrackSelect(track)}
-          >
-            <img 
-              src={track.cover} 
-              alt={track.title}
-              className="track-item-cover"
-            />
-            <div className="track-item-info">
-              <h4 className="track-item-title">{track.title}</h4>
-              <p className="track-item-artist">{track.artist}</p>
+        {/* Infos piste */}
+        {currentTrack && (
+          <div className="current-track">
+            <img src={currentTrack.cover} alt={currentTrack.title} className="track-cover" />
+            <div className="track-info">
+              <h3 className="track-title">{currentTrack.title}</h3>
+              <p className="track-artist">{currentTrack.artist}</p>
+              <p className="track-duration">{currentTrack.duration}</p>
             </div>
-            <span className="track-item-duration">{track.duration}</span>
           </div>
-        ))}
-      </div>
+        )}
+      </section>
     </div>
   )
 }
