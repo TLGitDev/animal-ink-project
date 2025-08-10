@@ -22,8 +22,8 @@ class MusicPlayerElement extends HTMLElement {
     // Ajouter les styles CSS au Shadow DOM
     const styleSheet = document.createElement('style');
     styleSheet.textContent = `
-      :host { display: block; width: 100%; height: 100%; }
-      #music-player-root { width: 100%; height: 100%; }
+      :host { display: block; width: 100%; height: 100%; max-width: 100%; }
+      #music-player-root { width: 100%; height: 100%; max-width: 100%; }
     ` + indexCss + '\n' + appCss;
     shadow.appendChild(styleSheet);
 

@@ -38,6 +38,7 @@ function App() {
   const [currentTrack, setCurrentTrack] = useState<Track | null>(mockTracks[0]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.7);
+  const [showVolume, setShowVolume] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -156,6 +157,30 @@ function App() {
             {isPlaying ? '⏸' : '▶'}
           </button>
           <button className="control-btn next-btn" onClick={handleNext} aria-label="Piste suivante">⏭</button>
+
+          {/* Volume inline avec toggle */}
+          <div className="volume-inline">
+            <button
+              className="control-btn volume-toggle"
+              onClick={() => setShowVolume(v => !v)}
+              aria-label="Volume"
+              aria-expanded={showVolume}
+            >
+              🔊
+            </button>
+            {showVolume && (
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.1"
+                value={volume}
+                onChange={handleVolumeChange}
+                className="volume-bar"
+                aria-label="Régler le volume"
+              />
+            )}
+          </div>
         </div>
 
         {/* Barre de progression + temps */}
@@ -171,32 +196,6 @@ function App() {
           />
           <span className="time-display">{formatTime(duration)}</span>
         </div>
-
-        {/* Volume */}
-        <div className="volume-control">
-          <span className="volume-icon">🔊</span>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.1"
-            value={volume}
-            onChange={handleVolumeChange}
-            className="volume-bar"
-          />
-        </div>
-
-        {/* Infos piste */}
-        {currentTrack && (
-          <div className="current-track">
-            <img src={currentTrack.cover} alt={currentTrack.title} className="track-cover" />
-            <div className="track-info">
-              <h3 className="track-title">{currentTrack.title}</h3>
-              <p className="track-artist">{currentTrack.artist}</p>
-              <p className="track-duration">{currentTrack.duration}</p>
-            </div>
-          </div>
-        )}
       </section>
     </div>
   )

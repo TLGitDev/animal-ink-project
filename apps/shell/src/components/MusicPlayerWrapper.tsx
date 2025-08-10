@@ -61,11 +61,11 @@ export default function MusicPlayerWrapper({ className = '', variant = 'card' }:
   }, [isClient, scriptLoaded]);
 
   const containerBase = variant === 'fullscreen'
-    ? 'w-full h-full flex flex-col p-0 m-0 bg-transparent rounded-none shadow-none min-h-0 overflow-hidden'
+    ? 'w-full h-full p-0 m-0 bg-transparent rounded-none shadow-none min-w-0'
     : 'w-full p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg';
 
   const webComponentHtml = variant === 'fullscreen'
-    ? '<music-player variant="fullscreen" style="display:block;width:100%;max-width:100%;height:100%"></music-player>'
+    ? '<music-player variant="fullscreen" style="display:block;box-sizing:border-box;width:100%;max-width:100%;height:100%;max-height:100%;overflow:hidden"></music-player>'
     : '<music-player></music-player>';
 
   if (!isClient) {
@@ -83,7 +83,7 @@ export default function MusicPlayerWrapper({ className = '', variant = 'card' }:
             </p>
           </div>
         )}
-        <div className={variant === 'fullscreen' ? 'flex-1 min-h-0 flex items-center justify-center' : 'min-h-[400px] flex items-center justify-center'}>
+        <div className={variant === 'fullscreen' ? 'min-h-[200px] flex items-center justify-center' : 'min-h-[400px] flex items-center justify-center'}>
           <div className="text-gray-500 dark:text-gray-400">Chargement...</div>
         </div>
       </div>
@@ -106,7 +106,7 @@ export default function MusicPlayerWrapper({ className = '', variant = 'card' }:
       )}
 
       {isLoading && (
-        <div className={variant === 'fullscreen' ? 'flex-1 min-h-0 flex items-center justify-center' : 'min-h-[400px] flex items-center justify-center'}>
+        <div className={variant === 'fullscreen' ? 'min-h-[200px] flex items-center justify-center' : 'min-h-[400px] flex items-center justify-center'}>
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
             <div className="text-gray-500 dark:text-gray-400">
@@ -117,13 +117,13 @@ export default function MusicPlayerWrapper({ className = '', variant = 'card' }:
       )}
 
       {webComponentReady && (
-        <div className={variant === 'fullscreen' ? 'flex-1 min-h-0 w-full' : 'min-h-[400px]'}
+        <div className={variant === 'fullscreen' ? 'h-full min-w-0' : undefined}
           dangerouslySetInnerHTML={{ __html: webComponentHtml }}
         />
       )}
 
       {error && (
-        <div className={variant === 'fullscreen' ? 'flex-1 min-h-0 flex items-center justify-center' : 'min-h-[400px] flex items-center justify-center'}>
+        <div className={variant === 'fullscreen' ? 'min-h-[200px] flex items-center justify-center' : 'min-h-[400px] flex items-center justify-center'}>
           <div className="text-center p-8 bg-red-50 dark:bg-red-900/20 rounded-lg">
             <div className="text-red-600 dark:text-red-400 text-lg font-medium mb-2">
               Erreur de chargement

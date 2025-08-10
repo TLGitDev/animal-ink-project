@@ -28,7 +28,7 @@ export default function Home() {
       </header>
 
       {/* Corps de page (seule zone qui change) */}
-      <main className={currentView === 'grid' ? 'w-full flex-1 py-12' : 'w-full flex-1 p-0 overflow-hidden'}>
+      <main className={currentView === 'grid' ? 'w-full flex-1 py-12' : 'w-full flex-1 p-0 min-h-0 flex flex-col'}>
         {currentView === 'grid' ? (
           <>
             <div className="text-center mb-12 px-4 sm:px-6 lg:px-8">
@@ -88,9 +88,9 @@ export default function Home() {
             </div>
           </>
         ) : (
-          <div className="w-full h-full flex flex-col overflow-hidden">
+          <div className="w-full flex-1 min-h-0 flex flex-col min-w-0">
             {/* Bouton Retour (dans le main) */}
-            <div className="p-4">
+            <div className="p-4 flex-shrink-0">
               <button
                 onClick={handleBackClick}
                 className="flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg"
@@ -102,8 +102,8 @@ export default function Home() {
               </button>
             </div>
 
-            {/* Contenu du MFE en plein écran dispo */}
-            <div className="flex-1 min-h-0 w-full">
+            {/* Contenu du MFE, doit remplir l’espace disponible sans dépasser */}
+            <div className="flex-1 min-h-0 w-full min-w-0">
               <MusicPlayerWrapper variant="fullscreen" />
             </div>
           </div>
