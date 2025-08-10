@@ -29,7 +29,7 @@ export default function Home() {
       </header>
 
       {/* Corps de page (seule zone qui change) */}
-      <main className={currentView === 'grid' ? 'w-full flex-1 py-12' : 'w-full flex-1 p-0 min-h-0 flex flex-col'}>
+      <main className={currentView === 'grid' ? 'w-full flex-1 py-12' : 'w-full flex-1 p-0 min-h-0 flex flex-col overflow-hidden'}>
         {currentView === 'grid' ? (
           <>
             <div className="text-center mb-12 px-4 sm:px-6 lg:px-8">
