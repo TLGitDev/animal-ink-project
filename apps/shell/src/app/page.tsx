@@ -29,26 +29,16 @@ export default function Home() {
       </header>
 
       {/* Corps de page (seule zone qui change) */}
-      <main className={currentView === 'grid' ? 'w-full flex-1 py-12' : 'w-full flex-1 p-0 min-h-0 flex flex-col overflow-hidden'}>
+      <main className={currentView === 'grid' ? 'w-full flex-1 py-8 md:py-12' : 'w-full flex-1 p-0 min-h-0 flex flex-col overflow-hidden'}>
         {currentView === 'grid' ? (
           <>
-            <div className="text-center mb-12 px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                Bienvenue sur Animal Ink
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
-                Une plateforme moderne construite avec des micro-frontends,
-                combinant Next.js et React pour une expérience utilisateur exceptionnelle.
-              </p>
-            </div>
-
             {/* Grille des MFE */}
             <div className="w-full px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
                 {/* Bouton MFE Template (ajouté avant Music Player) */}
                 <button
                   onClick={() => handleMFEClick('template')}
-                  className="group bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700"
+                  className="group bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 h-full"
                 >
                   <div className="w-16 h-16 bg-indigo-100 dark:bg-indigo-900 rounded-xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-8 h-8 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -66,7 +56,7 @@ export default function Home() {
                 {/* Bouton Lecteur de Musique */}
                 <button
                   onClick={() => handleMFEClick('music-player')}
-                  className="group bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700"
+                  className="group bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 h-full"
                 >
                   <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,7 +72,7 @@ export default function Home() {
                 </button>
 
                 {/* Placeholders pour futurs MFE */}
-                <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex items-center justify-center">
+                <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex items-center justify-center h-full">
                   <div className="text-center">
                     <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-xl flex items-center justify-center mb-6 mx-auto">
                       <svg className="w-8 h-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,7 +83,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex items-center justify-center">
+                <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex items-center justify-center h-full">
                   <div className="text-center">
                     <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-xl flex items-center justify-center mb-6 mx-auto">
                       <svg className="w-8 h-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,10 +140,10 @@ export default function Home() {
       </main>
 
       {/* Footer (fixe) */}
-      <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 mt-20">
+      <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
         <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center text-gray-600 dark:text-gray-400">
-            <p>&copy; 2024 Animal Ink. Construit avec des micro-frontends.</p>
+            <p>&copy; 2025 Animal Ink.</p>
           </div>
         </div>
       </footer>
