@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
-import './index.css'
+import indexCss from './index.css?inline'
+import appCss from './App.css?inline'
 
 // Créer un composant Web personnalisé
 class MusicPlayerElement extends HTMLElement {
@@ -18,21 +19,12 @@ class MusicPlayerElement extends HTMLElement {
     container.style.height = '100%';
     shadow.appendChild(container);
 
-    // Ajouter les styles CSS
+    // Ajouter les styles CSS au Shadow DOM
     const styleSheet = document.createElement('style');
     styleSheet.textContent = `
       :host { display: block; width: 100%; height: 100%; }
-      /* Styles de base pour le composant */
-      #music-player-root {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-          sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        width: 100%;
-        height: 100%;
-      }
-    `;
+      #music-player-root { width: 100%; height: 100%; }
+    ` + indexCss + '\n' + appCss;
     shadow.appendChild(styleSheet);
 
     // Rendre l'application React
