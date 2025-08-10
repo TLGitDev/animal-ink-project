@@ -6,6 +6,7 @@ Monorepo microfrontend: Next.js (shell) + MFE React+Vite (lecteur de musique) ex
 
 - **apps/shell** - Application Next.js principale (coquille)
 - **apps/mfe-music-player** - Micro-frontend lecteur de musique avec React + Vite
+- **apps/mfe-template** - Template générique React+Vite (Web Component) pour créer de nouveaux MFEs
 - **packages/ui** - Bibliothèque de composants React partagés (`@animal-ink/ui`)
 
 ## Fonctionnalités
@@ -63,6 +64,22 @@ npm run dev
 3) Accès
 - Shell: http://localhost:3000
 - MFE:   http://localhost:5173
+
+## Créer un nouveau MFE à partir du template
+
+1) Copier le dossier `apps/mfe-template` en `apps/mfe-<nom>` et remplacer toutes les occurrences de `mfe-template` (et `MFETemplate` pour le nom du bundle).
+
+2) Installer et build:
+```bash
+cd apps/mfe-<nom>
+npm install
+npm run build
+mkdir -p ../shell/public/mfe && cp dist/mfe-template.es.js ../shell/public/mfe/mfe-<nom>.es.js
+```
+
+3) Charger dans le shell (prod): `/mfe/mfe-<nom>.es.js` ; (dev): `http://localhost:5180/src/main.tsx` si vous avez gardé le port par défaut.
+
+4) Utilisation: `<mfe-<nom>></mfe-<nom>>`
 
 ## Déploiement Vercel (un seul projet)
 - Paramètres projet:
