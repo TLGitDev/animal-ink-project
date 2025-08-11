@@ -29,26 +29,26 @@ export default function Home() {
       </header>
 
       {/* Corps de page (seule zone qui change) */}
-      <main className={currentView === 'grid' ? 'w-full flex-1 py-8 md:py-12' : 'w-full flex-1 p-0 min-h-0 flex flex-col overflow-hidden'}>
+      <main className={currentView === 'grid' ? 'w-full flex-1 py-4 md:py-8 lg:py-12 overflow-y-auto' : 'w-full flex-1 p-0 min-h-0 flex flex-col overflow-hidden'}>
         {currentView === 'grid' ? (
           <>
             {/* Grille des MFE */}
-            <div className="w-full px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+            <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-stretch">
                 {/* Bouton MFE Template (ajouté avant Music Player) */}
                 <button
                   onClick={() => handleMFEClick('template')}
-                  className="group bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 h-full"
+                  className="group bg-white dark:bg-gray-900 p-4 md:p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 h-full"
                 >
-                  <div className="w-16 h-16 bg-indigo-100 dark:bg-indigo-900 rounded-xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-8 h-8 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-indigo-100 dark:bg-indigo-900 rounded-xl flex items-center justify-center mb-4 md:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-6 h-6 md:w-8 md:h-8 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2 md:mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                     MFE Template
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm leading-relaxed">
                     Base générique (React+Vite) prête à dupliquer
                   </p>
                 </button>
@@ -56,41 +56,41 @@ export default function Home() {
                 {/* Bouton Lecteur de Musique */}
                 <button
                   onClick={() => handleMFEClick('music-player')}
-                  className="group bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 h-full"
+                  className="group bg-white dark:bg-gray-900 p-4 md:p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 h-full"
                 >
-                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center mb-4 md:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-6 h-6 md:w-8 md:h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM21 16c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2 md:mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                     Lecteur de Musique
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm leading-relaxed">
                     Micro-frontend React avec Vite, intégré dans le shell Next.js
                   </p>
                 </button>
 
                 {/* Placeholders pour futurs MFE */}
-                <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex items-center justify-center h-full">
+                <div className="bg-gray-100 dark:bg-gray-800 p-4 md:p-6 lg:p-8 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex items-center justify-center h-full">
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-xl flex items-center justify-center mb-6 mx-auto">
-                      <svg className="w-8 h-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-12 h-12 md:w-16 md:h-16 bg-gray-200 dark:bg-gray-700 rounded-xl flex items-center justify-center mb-4 md:mb-6 mx-auto">
+                      <svg className="w-6 h-6 md:w-8 md:h-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                       </svg>
                     </div>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm">Nouveau MFE à venir...</p>
+                    <p className="text-gray-500 dark:text-gray-400 text-xs md:text-sm">Nouveau MFE à venir...</p>
                   </div>
                 </div>
 
-                <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex items-center justify-center h-full">
+                <div className="bg-gray-100 dark:bg-gray-800 p-4 md:p-6 lg:p-8 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex items-center justify-center h-full">
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-xl flex items-center justify-center mb-6 mx-auto">
-                      <svg className="w-8 h-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-12 h-12 md:w-16 md:h-16 bg-gray-200 dark:bg-gray-700 rounded-xl flex items-center justify-center mb-4 md:mb-6 mx-auto">
+                      <svg className="w-6 h-6 md:w-8 md:h-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                       </svg>
                     </div>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm">Nouveau MFE à venir...</p>
+                    <p className="text-gray-500 dark:text-gray-400 text-xs md:text-sm">Nouveau MFE à venir...</p>
                   </div>
                 </div>
               </div>

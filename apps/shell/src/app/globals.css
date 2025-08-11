@@ -29,3 +29,12 @@ body {
   margin: 0;
   overflow: hidden; /* supprimer la barre de scroll globale */
 }
+
+/* Responsive scroll management */
+@media (max-width: 768px) {
+  html,
+  body {
+    overflow-y: auto; /* Allow vertical scroll on mobile */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+}
