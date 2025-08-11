@@ -2,6 +2,8 @@
 
 Monorepo microfrontend: Next.js (shell) + MFE React+Vite (lecteur de musique) exposé en Web Components + UI partagée.
 
+https://animal-ink-project.vercel.app/
+
 ## Structure du projet
 
 - **apps/shell** - Application Next.js principale (coquille)
