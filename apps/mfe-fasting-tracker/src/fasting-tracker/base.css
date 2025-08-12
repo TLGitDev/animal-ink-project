@@ -1,0 +1,164 @@
+/* Conteneur global: grille 2 colonnes, responsive, bornée au cadre */
+.mfe-root {
+  display: grid;
+  grid-template-columns: minmax(220px, 26%) minmax(0, 1fr);
+  gap: 0.75rem;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden; /* ne pas dépasser le cadre */
+  padding: 0.75rem; /* marges intérieures visibles 4 côtés */
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #0f172a 0%, #1f2a44 100%);
+  color: #e5e7eb;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.mfe-root *, .mfe-root *::before, .mfe-root *::after { box-sizing: border-box; }
+
+/* Aside (gauche) */
+.mfe-aside {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-width: 100%;
+}
+.mfe-title { margin: 0 0 0.5rem 0; font-weight: 600; color: #fff; }
+.mfe-subtitle { margin: 0.75rem 0 0.5rem 0; font-weight: 500; color: #cbd5e1; font-size: 0.9rem; }
+.mfe-list {
+  margin: 0; padding: 0; list-style: none; flex: 1; min-height: 0; overflow-y: auto;
+}
+.mfe-item { 
+  padding: 0.5rem; 
+  border-radius: 8px; 
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.mfe-item:hover { background: rgba(255,255,255,0.08); }
+.mfe-item.active { 
+  background: rgba(34, 197, 94, 0.15); 
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+/* Panneau (droite) en grille: visuel 1fr + contrôles en bas */
+.mfe-panel {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.75rem;
+  min-height: 0;
+  max-height: 100%;
+  overflow: hidden;
+}
+.mfe-visual {
+  width: 100%; height: 100%; min-height: 120px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center; color: #cbd5e1;
+  background: rgba(255,255,255,0.08);
+  flex-direction: column;
+  text-align: center;
+}
+.mfe-controls { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+
+/* Boutons */
+.mfe-btn { 
+  background: #3b82f6; 
+  color: #fff; 
+  border: 0; 
+  border-radius: 8px; 
+  padding: 0.75rem 1rem; 
+  cursor: pointer; 
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.mfe-btn:hover { background: #2563eb; transform: translateY(-1px); }
+.start-btn { background: #10b981; }
+.start-btn:hover { background: #059669; }
+.stop-btn { background: #ef4444; }
+.stop-btn:hover { background: #dc2626; }
+
+/* Affichage du jeûne */
+.fasting-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 1rem;
+}
+.fasting-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+.fasting-timer {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #10b981;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+.fasting-start {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+}
+.fasting-message {
+  color: #9ca3af;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Informations des sessions */
+.session-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.session-date {
+  font-weight: 500;
+  color: #fff;
+}
+.session-duration {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+.active-indicator {
+  color: #10b981;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Statistiques */
+.stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+.stat-item {
+  color: #cbd5e1;
+  padding: 0.25rem 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+/* Responsive largeur */
+@media (max-width: 900px) {
+  .mfe-root { grid-template-columns: 1fr; gap: 0.5rem; padding: 0.5rem; }
+  .mfe-aside { order: 2; }
+  .mfe-panel { order: 1; }
+  .fasting-timer { font-size: 2.5rem; }
+}
+
+/* Responsive hauteur */
+@media (max-height: 800px) {
+  .mfe-visual { min-height: 100px; }
+  .fasting-timer { font-size: 2rem; }
+}
