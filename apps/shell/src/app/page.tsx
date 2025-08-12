@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import MusicPlayerWrapper from '../components/MusicPlayerWrapper';
 import TemplateWrapper from '../components/TemplateWrapper';
+import FastingTrackerWrapper from '../components/FastingTrackerWrapper';
 
-type MFEView = 'grid' | 'music-player' | 'template';
+type MFEView = 'grid' | 'music-player' | 'template' | 'fasting-tracker';
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<MFEView>('grid');
@@ -71,6 +72,24 @@ export default function Home() {
                   </p>
                 </button>
 
+                {/* Bouton Suivi du Jeûne */}
+                <button
+                  onClick={() => handleMFEClick('fasting-tracker')}
+                  className="group bg-white dark:bg-gray-900 p-4 md:p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 h-full"
+                >
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-green-100 dark:bg-green-900 rounded-xl flex items-center justify-center mb-4 md:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-6 h-6 md:w-8 md:h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2 md:mb-3 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                    Suivi du Jeûne
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm leading-relaxed">
+                    Suivez vos périodes de jeûne et vos objectifs de santé
+                  </p>
+                </button>
+
                 {/* Placeholders pour futurs MFE */}
                 <div className="bg-gray-100 dark:bg-gray-800 p-4 md:p-6 lg:p-8 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex items-center justify-center h-full">
                   <div className="text-center">
@@ -114,6 +133,26 @@ export default function Home() {
             {/* Contenu du MFE, doit remplir l’espace disponible sans dépasser */}
             <div className="flex-1 min-h-0 w-full min-w-0">
               <MusicPlayerWrapper variant="fullscreen" />
+            </div>
+          </div>
+        ) : currentView === 'fasting-tracker' ? (
+          <div className="w-full flex-1 min-h-0 flex flex-col min-w-0">
+            {/* Bouton Retour (dans le main) */}
+            <div className="p-4 flex-shrink-0">
+              <button
+                onClick={handleBackClick}
+                className="flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200 shadow-md hover:shadow-lg"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Retour
+              </button>
+            </div>
+
+            {/* Contenu du MFE Fasting Tracker */}
+            <div className="flex-1 min-h-0 w-full min-w-0">
+              <FastingTrackerWrapper variant="fullscreen" />
             </div>
           </div>
         ) : (

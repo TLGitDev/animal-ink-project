@@ -4,9 +4,10 @@
   "description": "Monorepo microfrontend: Next.js (shell) + MFE React+Vite (lecteur de musique) exposé en Web Components.",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npm run dev:shell\" \"npm run dev:music-player\" \"npm run dev:template\"",
+    "dev": "concurrently \"npm run dev:shell\" \"npm run dev:music-player\" \"npm run dev:template\" \"npm run dev:fasting-tracker\"",
     "dev:shell": "cd apps/shell && npm run dev",
     "dev:music-player": "cd apps/mfe-music-player && npm run dev",
+    "dev:fasting-tracker": "cd apps/mfe-fasting-tracker && npm run dev",
     "dev:template": "cd apps/mfe-template && npm run dev",
     "build": "npm run build:ui && npm run build:shell && npm run build:music-player",
     "build:template": "cd apps/mfe-template && npm run build",
