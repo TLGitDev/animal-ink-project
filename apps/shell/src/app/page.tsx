@@ -19,16 +19,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
-      {/* Header (fixe) */}
-      <header className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center items-center py-6">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Animal Ink</h1>
-          </div>
-        </div>
-      </header>
-
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-black via-gray-900 to-yellow-900 dark:from-black dark:via-gray-900 dark:to-yellow-900">
       {/* Corps de page (seule zone qui change) */}
       <main className={currentView === 'grid' ? 'w-full flex-1 py-4 md:py-8 lg:py-12 overflow-y-auto' : 'w-full flex-1 p-0 min-h-0 flex flex-col overflow-hidden'}>
         {currentView === 'grid' ? (
@@ -39,14 +30,14 @@ export default function Home() {
                 {/* Bouton MFE Template (ajouté avant Music Player) */}
                 <button
                   onClick={() => handleMFEClick('template')}
-                  className="group bg-white dark:bg-gray-900 p-4 md:p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 h-full"
+                  className="group bg-white dark:bg-gray-900 p-4 md:p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-yellow-200 dark:border-yellow-700 h-full"
                 >
-                  <div className="w-12 h-12 md:w-16 md:h-16 bg-indigo-100 dark:bg-indigo-900 rounded-xl flex items-center justify-center mb-4 md:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-6 h-6 md:w-8 md:h-8 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-yellow-100 dark:bg-yellow-900 rounded-xl flex items-center justify-center mb-4 md:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-6 h-6 md:w-8 md:h-8 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                   </div>
-                  <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2 md:mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2 md:mb-3 group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">
                     MFE Template
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm leading-relaxed">
@@ -57,14 +48,14 @@ export default function Home() {
                 {/* Bouton Lecteur de Musique */}
                 <button
                   onClick={() => handleMFEClick('music-player')}
-                  className="group bg-white dark:bg-gray-900 p-4 md:p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 h-full"
+                  className="group bg-white dark:bg-gray-900 p-4 md:p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-red-200 dark:border-red-700 h-full"
                 >
-                  <div className="w-12 h-12 md:w-16 md:h-16 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center mb-4 md:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-6 h-6 md:w-8 md:h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-red-100 dark:bg-red-900 rounded-xl flex items-center justify-center mb-4 md:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-6 h-6 md:w-8 md:h-8 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM21 16c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
                     </svg>
                   </div>
-                  <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2 md:mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2 md:mb-3 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                     Lecteur de Musique
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm leading-relaxed">
@@ -75,14 +66,14 @@ export default function Home() {
                 {/* Bouton Suivi du Jeûne */}
                 <button
                   onClick={() => handleMFEClick('fasting-tracker')}
-                  className="group bg-white dark:bg-gray-900 p-4 md:p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 h-full"
+                  className="group bg-white dark:bg-gray-900 p-4 md:p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-yellow-200 dark:border-yellow-700 h-full"
                 >
-                  <div className="w-12 h-12 md:w-16 md:h-16 bg-green-100 dark:bg-green-900 rounded-xl flex items-center justify-center mb-4 md:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-6 h-6 md:w-8 md:h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-yellow-100 dark:bg-yellow-900 rounded-xl flex items-center justify-center mb-4 md:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-6 h-6 md:w-8 md:h-8 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2 md:mb-3 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2 md:mb-3 group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">
                     Suivi du Jeûne
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm leading-relaxed">
@@ -116,39 +107,31 @@ export default function Home() {
             </div>
           </>
         ) : currentView === 'music-player' ? (
-          <div className="w-full flex-1 min-h-0 flex flex-col min-w-0">
-            {/* Bouton Retour (dans le main) */}
-            <div className="p-4 flex-shrink-0">
-              <button
-                onClick={handleBackClick}
-                className="flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                Retour
-              </button>
-            </div>
+          <div className="w-full flex-1 min-h-0 flex flex-col min-w-0 relative">
+            {/* Bouton Retour avec icône 'A' et z-index élevé */}
+            <button
+              onClick={handleBackClick}
+              className="absolute top-4 right-4 z-50 w-12 h-12 bg-red-600 text-white rounded-full hover:bg-red-700 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center text-xl font-bold hover:scale-110"
+              style={{ zIndex: 9999 }}
+            >
+              A
+            </button>
 
-            {/* Contenu du MFE, doit remplir l’espace disponible sans dépasser */}
+            {/* Contenu du MFE, doit remplir l'espace disponible sans dépasser */}
             <div className="flex-1 min-h-0 w-full min-w-0">
               <MusicPlayerWrapper variant="fullscreen" />
             </div>
           </div>
         ) : currentView === 'fasting-tracker' ? (
-          <div className="w-full flex-1 min-h-0 flex flex-col min-w-0">
-            {/* Bouton Retour (dans le main) */}
-            <div className="p-4 flex-shrink-0">
-              <button
-                onClick={handleBackClick}
-                className="flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200 shadow-md hover:shadow-lg"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                Retour
-              </button>
-            </div>
+          <div className="w-full flex-1 min-h-0 flex flex-col min-w-0 relative">
+            {/* Bouton Retour avec icône 'A' et z-index élevé */}
+            <button
+              onClick={handleBackClick}
+              className="absolute top-4 right-4 z-50 w-12 h-12 bg-yellow-600 text-white rounded-full hover:bg-yellow-700 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center text-xl font-bold hover:scale-110"
+              style={{ zIndex: 9999 }}
+            >
+              A
+            </button>
 
             {/* Contenu du MFE Fasting Tracker */}
             <div className="flex-1 min-h-0 w-full min-w-0">
@@ -156,19 +139,15 @@ export default function Home() {
             </div>
           </div>
         ) : (
-          <div className="w-full flex-1 min-h-0 flex flex-col min-w-0">
-            {/* Bouton Retour (dans le main) */}
-            <div className="p-4 flex-shrink-0">
-              <button
-                onClick={handleBackClick}
-                className="flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                Retour
-              </button>
-            </div>
+          <div className="w-full flex-1 min-h-0 flex flex-col min-w-0 relative">
+            {/* Bouton Retour avec icône 'A' et z-index élevé */}
+            <button
+              onClick={handleBackClick}
+              className="absolute top-4 right-4 z-50 w-12 h-12 bg-yellow-600 text-white rounded-full hover:bg-yellow-700 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center text-xl font-bold hover:scale-110"
+              style={{ zIndex: 9999 }}
+            >
+              A
+            </button>
 
             {/* Contenu du MFE Template */}
             <div className="flex-1 min-h-0 w-full min-w-0">
@@ -177,15 +156,6 @@ export default function Home() {
           </div>
         )}
       </main>
-
-      {/* Footer (fixe) */}
-      <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-        <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center text-gray-600 dark:text-gray-400">
-            <p>&copy; 2025 Animal Ink.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

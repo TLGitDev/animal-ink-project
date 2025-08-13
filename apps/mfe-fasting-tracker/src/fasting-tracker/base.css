@@ -8,8 +8,8 @@
   overflow-x: hidden;
   padding: 1rem;
   box-sizing: border-box;
-  background: linear-gradient(135deg, #0f172a 0%, #1f2a44 100%);
-  color: #e5e7eb;
+  background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #2D2D2D 100%);
+  color: #F5F5F5;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
@@ -30,8 +30,8 @@
 
 /* Style des cartes */
 .mfe-card {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.12);
   border-radius: 16px;
   padding: 1.5rem;
   backdrop-filter: blur(10px);
@@ -42,16 +42,16 @@
 .mfe-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(212, 175, 55, 0.2);
 }
 
 .card-title {
   margin: 0 0 1rem 0;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #fff;
+  color: #D4AF37;
   text-align: center;
-  border-bottom: 2px solid rgba(59, 130, 246, 0.5);
+  border-bottom: 2px solid rgba(212, 175, 55, 0.5);
   padding-bottom: 0.5rem;
 }
 
@@ -72,28 +72,28 @@
   align-items: center;
   padding: 0.75rem 0.5rem;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(212, 175, 55, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.1);
   transition: all 0.2s ease;
   min-height: 80px;
   justify-content: center;
 }
 
 .day-item:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(212, 175, 55, 0.1);
   transform: scale(1.05);
 }
 
 .day-item.has-fasting {
-  background: rgba(16, 185, 129, 0.15);
-  border-color: rgba(16, 185, 129, 0.3);
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+  background: rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
 }
 
 .day-name {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #9ca3af;
+  color: #9CA3AF;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 0.25rem;
@@ -102,15 +102,15 @@
 .day-date {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #fff;
+  color: #F5F5F5;
   margin-bottom: 0.25rem;
 }
 
 .fasting-indicator {
   font-size: 0.7rem;
-  color: #10b981;
+  color: #D4AF37;
   font-weight: 600;
-  background: rgba(16, 185, 129, 0.2);
+  background: rgba(212, 175, 55, 0.2);
   padding: 0.2rem 0.4rem;
   border-radius: 8px;
   text-align: center;
@@ -133,26 +133,26 @@
 .fasting-timer {
   font-size: 3.5rem;
   font-weight: 700;
-  color: #10b981;
+  color: #D4AF37;
   font-family: 'Courier New', monospace;
-  text-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+  text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
   letter-spacing: 2px;
 }
 
 .fasting-timer.idle {
-  color: #6b7280;
+  color: #6B7280;
   text-shadow: none;
 }
 
 .fasting-status {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #fff;
+  color: #F5F5F5;
   text-align: center;
 }
 
 .fasting-start {
-  color: #9ca3af;
+  color: #9CA3AF;
   font-size: 0.9rem;
   text-align: center;
 }
@@ -169,14 +169,14 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(212, 175, 55, 0.05);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.1);
 }
 
 .stat-label {
   font-size: 0.8rem;
-  color: #9ca3af;
+  color: #9CA3AF;
   margin-bottom: 0.5rem;
   text-align: center;
 }
@@ -184,7 +184,7 @@
 .stat-value {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #3b82f6;
+  color: #D4AF37;
 }
 
 /* Bloc 3: Poids */
@@ -200,30 +200,30 @@
 
 .weight-field {
   flex: 1;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 8px;
   padding: 0.75rem;
-  color: #fff;
+  color: #F5F5F5;
   font-size: 1rem;
   transition: all 0.2s ease;
 }
 
 .weight-field::placeholder {
-  color: #9ca3af;
+  color: #9CA3AF;
 }
 
 .weight-field:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #D4AF37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
 
 .weight-subtitle {
   margin: 0 0 1rem 0;
   font-size: 1rem;
   font-weight: 500;
-  color: #cbd5e1;
+  color: #F5F5F5;
 }
 
 .weight-list {
@@ -237,31 +237,31 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(212, 175, 55, 0.05);
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.1);
   transition: all 0.2s ease;
 }
 
 .weight-entry:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(212, 175, 55, 0.08);
 }
 
 .weight-value {
   font-weight: 600;
-  color: #fff;
+  color: #F5F5F5;
   font-size: 1.1rem;
 }
 
 .weight-date {
   font-size: 0.85rem;
-  color: #9ca3af;
+  color: #9CA3AF;
 }
 
 /* Boutons */
 .mfe-btn {
-  background: #3b82f6;
-  color: #fff;
+  background: #D4AF37;
+  color: #0A0A0A;
   border: 0;
   border-radius: 8px;
   padding: 0.75rem 1rem;
@@ -273,38 +273,41 @@
 }
 
 .mfe-btn:hover {
-  background: #2563eb;
+  background: #FFD700;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
 
 .start-btn {
-  background: #10b981;
+  background: #D4AF37;
+  color: #0A0A0A;
 }
 
 .start-btn:hover {
-  background: #059669;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  background: #FFD700;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
 
 .stop-btn {
-  background: #ef4444;
+  background: #DC2626;
+  color: white;
 }
 
 .stop-btn:hover {
-  background: #dc2626;
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  background: #B91C1C;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
 }
 
 .add-weight-btn {
-  background: #8b5cf6;
+  background: #B8860B;
+  color: white;
   min-width: auto;
   white-space: nowrap;
 }
 
 .add-weight-btn:hover {
-  background: #7c3aed;
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  background: #D4AF37;
+  box-shadow: 0 4px 12px rgba(184, 134, 11, 0.3);
 }
 
 /* Styles de la barre de défilement */
@@ -313,17 +316,17 @@
 }
 
 .mfe-root::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(212, 175, 55, 0.1);
   border-radius: 4px;
 }
 
 .mfe-root::-webkit-scrollbar-thumb {
-  background: rgba(59, 130, 246, 0.6);
+  background: rgba(212, 175, 55, 0.6);
   border-radius: 4px;
 }
 
 .mfe-root::-webkit-scrollbar-thumb:hover {
-  background: rgba(59, 130, 246, 0.8);
+  background: rgba(212, 175, 55, 0.8);
 }
 
 /* Responsive design */

@@ -59,7 +59,7 @@ export default function TemplateWrapper({ className = '', variant = 'card' }: Te
 
   const containerBase = variant === 'fullscreen'
     ? 'w-full h-full p-0 m-0 bg-transparent rounded-none shadow-none min-w-0'
-    : 'w-full p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg';
+    : 'w-full p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-yellow-600/20';
 
   const webComponentHtml = variant === 'fullscreen'
     ? '<mfe-template style="display:block;box-sizing:border-box;width:100%;max-width:100%;height:100%;max-height:100%;overflow:hidden"></mfe-template>'
@@ -70,8 +70,12 @@ export default function TemplateWrapper({ className = '', variant = 'card' }: Te
       <div className={`${containerBase} ${className}`}>
         {variant !== 'fullscreen' && (
           <div className="text-center mb-4">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">MFE Template</h2>
-            <p className="text-gray-600 dark:text-gray-400">Micro-frontend template intégré dans le shell Next.js</p>
+            <h2 className="text-2xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">
+              Template MFE
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              Micro-frontend template int&eacute;gr&eacute; dans le shell Next.js
+            </p>
           </div>
         )}
         <div className={variant === 'fullscreen' ? 'min-h-[200px] flex items-center justify-center' : 'min-h-[300px] flex items-center justify-center'}>
@@ -85,8 +89,12 @@ export default function TemplateWrapper({ className = '', variant = 'card' }: Te
     <div className={`${containerBase} ${className}`}>
       {variant !== 'fullscreen' && (
         <div className="text-center mb-4">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">MFE Template</h2>
-          <p className="text-gray-600 dark:text-gray-400">Micro-frontend template intégré dans le shell Next.js</p>
+          <h2 className="text-2xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">
+            Template MFE
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400">
+            Micro-frontend template int&eacute;gr&eacute; dans le shell Next.js
+          </p>
         </div>
       )}
 

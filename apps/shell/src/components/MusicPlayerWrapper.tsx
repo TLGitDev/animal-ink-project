@@ -62,7 +62,7 @@ export default function MusicPlayerWrapper({ className = '', variant = 'card' }:
 
   const containerBase = variant === 'fullscreen'
     ? 'w-full h-full p-0 m-0 bg-transparent rounded-none shadow-none min-w-0'
-    : 'w-full p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg';
+    : 'w-full p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-yellow-600/20';
 
   const webComponentHtml = variant === 'fullscreen'
     ? '<music-player variant="fullscreen" style="display:block;box-sizing:border-box;width:100%;max-width:100%;height:100%;max-height:100%;overflow:hidden"></music-player>'
@@ -75,7 +75,7 @@ export default function MusicPlayerWrapper({ className = '', variant = 'card' }:
       >
         {variant !== 'fullscreen' && (
           <div className="text-center mb-4">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            <h2 className="text-2xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">
               Lecteur de Musique
             </h2>
             <p className="text-gray-600 dark:text-gray-400">
@@ -96,7 +96,7 @@ export default function MusicPlayerWrapper({ className = '', variant = 'card' }:
     >
       {variant !== 'fullscreen' && (
         <div className="text-center mb-4">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+          <h2 className="text-2xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">
             Lecteur de Musique
           </h2>
           <p className="text-gray-600 dark:text-gray-400">
