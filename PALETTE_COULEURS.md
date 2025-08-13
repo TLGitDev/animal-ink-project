@@ -50,12 +50,7 @@ Le projet a été mis à jour avec une nouvelle palette de couleurs élégante b
 - **Boutons** : Doré principal avec rouge pour l'arrêt
 - **Indicateurs** : Doré pour les éléments actifs
 
-### 4. **Template MFE** (`apps/mfe-template/`)
-- **Arrière-plan** : Gradient noir uniforme
-- **Éléments** : Accents dorés pour la hiérarchie visuelle
-- **Boutons** : Doré principal avec survol doré vif
-
-### 5. **UI Partagée** (`packages/ui/`)
+### 4. **UI Partagée** (`packages/ui/`)
 - **Bouton primaire** : Doré (`bg-yellow-600`)
 - **Bouton secondaire** : Rouge (`bg-red-600`)
 

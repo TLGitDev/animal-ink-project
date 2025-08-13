@@ -1,6 +1,6 @@
 # animal-ink-project
 
-Monorepo microfrontend: Next.js (shell) + MFE React+Vite (lecteur de musique) exposé en Web Components + UI partagée.
+Monorepo microfrontend: Next.js (shell) + MFE React+Vite (lecteur de musique et tracker de jeûne) exposé en Web Components + UI partagée.
 
 https://animal-ink-project.vercel.app/
 
@@ -8,13 +8,14 @@ https://animal-ink-project.vercel.app/
 
 - **apps/shell** - Application Next.js principale (coquille)
 - **apps/mfe-music-player** - Micro-frontend lecteur de musique avec React + Vite
-- **apps/mfe-template** - Template générique React+Vite (Web Component) pour créer de nouveaux MFEs
+- **apps/mfe-fasting-tracker** - Micro-frontend tracker de jeûne avec React + Vite
 - **packages/ui** - Bibliothèque de composants React partagés (`@animal-ink/ui`)
 
 ## Fonctionnalités
 
 - **Shell Next.js** : Interface principale avec navigation et intégration des MFEs
 - **MFE Music Player** : Lecteur de musique moderne avec contrôles audio
+- **MFE Fasting Tracker** : Suivi des périodes de jeûne et objectifs de santé
 - **UI partagée** : Boutons et futurs composants communs entre apps
 - **Architecture modulaire** : Intégration via Web Components
 - **Design responsive** : Interface adaptée à tous les écrans
@@ -23,9 +24,9 @@ https://animal-ink-project.vercel.app/
 
 ### Monorepo (racine)
 ```bash
-npm run dev               # Démarre le shell ET le MFE en parallèle
-npm run build             # Build UI + Shell + MFE
-npm run build:vercel      # Build UI, MFE (bundle ES), copie dans shell/public/mfe/, build shell
+npm run dev               # Démarre le shell ET les MFEs en parallèle
+npm run build             # Build UI + Shell + MFEs
+npm run build:vercel      # Build UI, MFEs (bundle ES), copie dans shell/public/mfe/, build shell
 npm run install:all       # Installe toutes les dépendances
 npm run clean             # Nettoie node_modules et builds
 ```
@@ -42,6 +43,13 @@ npm run start    # Serveur de production
 ```bash
 cd apps/mfe-music-player
 npm run dev      # Dev Vite (port 5173)
+npm run build    # Build (bundle ES pour intégration)
+```
+
+### MFE Fasting Tracker
+```bash
+cd apps/mfe-fasting-tracker
+npm run dev      # Dev Vite (port 5174)
 npm run build    # Build (bundle ES pour intégration)
 ```
 
@@ -65,23 +73,8 @@ npm run dev
 
 3) Accès
 - Shell: http://localhost:3000
-- MFE:   http://localhost:5173
-
-## Créer un nouveau MFE à partir du template
-
-1) Copier le dossier `apps/mfe-template` en `apps/mfe-<nom>` et remplacer toutes les occurrences de `mfe-template` (et `MFETemplate` pour le nom du bundle).
-
-2) Installer et build:
-```bash
-cd apps/mfe-<nom>
-npm install
-npm run build
-mkdir -p ../shell/public/mfe && cp dist/mfe-template.es.js ../shell/public/mfe/mfe-<nom>.es.js
-```
-
-3) Charger dans le shell (prod): `/mfe/mfe-<nom>.es.js` ; (dev): `http://localhost:5180/src/main.tsx` si vous avez gardé le port par défaut.
-
-4) Utilisation: `<mfe-<nom>></mfe-<nom>>`
+- MFE Music Player: http://localhost:5173
+- MFE Fasting Tracker: http://localhost:5174
 
 ## Déploiement Vercel (un seul projet)
 - Paramètres projet:
@@ -95,13 +88,9 @@ mkdir -p ../shell/public/mfe && cp dist/mfe-template.es.js ../shell/public/mfe/m
   - Build `apps/shell`
 - Le shell charge le MFE en prod via `/mfe/music-player.es.js` (même origine, pas de CORS)
 
-## Utilisation de l’UI partagée
+## Utilisation de l'UI partagée
 ```tsx
 import { Button } from '@animal-ink/ui';
-
-export default function Demo() {
-  return <Button variant="primary">Clique</Button>;
-}
 ```
 
 ## Notes techniques
