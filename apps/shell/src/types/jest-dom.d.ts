@@ -17,8 +17,8 @@ declare global {
       toHaveDisplayValue(value: string | RegExp | (string | RegExp)[]): R;
       toBeChecked(): R;
       toHaveFocus(): R;
-      toHaveFormValues(expectedValues: Record<string, any>): R;
-      toHaveStyle(css: string | Record<string, any>): R;
+      toHaveFormValues(expectedValues: Record<string, string | number | boolean>): R;
+      toHaveStyle(css: string | Record<string, string | number>): R;
       toHaveAccessibleName(name: string | RegExp): R;
       toHaveAccessibleDescription(description: string | RegExp): R;
     }
